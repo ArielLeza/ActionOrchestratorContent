@@ -1,0 +1,133 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01EL94AE5O2CZ3nZvywuHL6rLZl5bkTTwmp",
+    "name": "CreateNewGuestAci_Dev",
+    "title": "CreateNewGuestAci_Dev",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "CreateNewGuestAci_Dev",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01EL9J17KWW7K64IQ4up5vNHRwpOOGwjHuS",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01EL94ETQUXVZ7GApUvpUdAoBxzWBaPCBiv",
+        "name": "Get Access Token",
+        "title": "Get Access Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Get Access Token",
+          "input": {
+            "variable_workflow_01gRbBzC6y65ilW690WbXhKOxVVEFAWak": "admin",
+            "variable_workflow_01gRbcbVNXvwNc0xy6oSxfLv1IMlF4e8W": "$global.variable_01EL947T57JLD0qS23t16BPCcBCKgvRNQnV.global.variable_01EL947T57JLD0qS23t16BPCcBCKgvRNQnV$"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "target_type": "01EL50L9ORRDT2Cubug555hhmx3zoNH5fWe",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01gRBIJ4lT0J8qCi0CcrG0bvgGO8oehuN"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01EL9ZC8V5VDV5U8GzFUAb8hN8yCQwlrKVk",
+        "name": "Generic API Request",
+        "title": "Generic API Request",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Generic API Request",
+          "input": {
+            "variable_workflow_01gsIwExqfmUaoggu6uOyvBvabqZA3ZLV": "$activity.definition_activity_01EL94ETQUXVZ7GApUvpUdAoBxzWBaPCBiv.output.variable_workflow_01gRCX1ylwvVGzqIKjoLIg04d3smgS7fS$",
+            "variable_workflow_01gsdK0zbTS4PCnARX0O9igJm1kjJuPeO": "POST",
+            "variable_workflow_01gsdloLMNSSYplMekO1An6ixWk3Lxp6i": "null",
+            "variable_workflow_01gsdpOPuyoXxmcr2tUmx0nYehy4zQq7V": "",
+            "variable_workflow_01gsdslJCwSZyhMcI4byCrpPtpAUomyce": "$activity.definition_activity_01EL94ETQUXVZ7GApUvpUdAoBxzWBaPCBiv.output.variable_workflow_01gRbEjEFEdeUwHe8H3oRrxdlHMSlQvFD$"
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "target_type": "01EL50L9ORRDT2Cubug555hhmx3zoNH5fWe",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_01gsDxN1Ug87C3EBEzmcxxiZoJPWfCB5x"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01EL95UJLXZDW6G337C711oR6OkhQNiYyRq"
+    ]
+  },
+  "categories": {
+    "category_01EL95UJLXZDW6G337C711oR6OkhQNiYyRq": {
+      "unique_name": "category_01EL95UJLXZDW6G337C711oR6OkhQNiYyRq",
+      "name": "Dev",
+      "title": "Dev",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_01EL9J17KWW7K64IQ4up5vNHRwpOOGwjHuS": {
+      "unique_name": "definition_target_01EL9J17KWW7K64IQ4up5vNHRwpOOGwjHuS",
+      "name": "AckFabric-5_HttpEp",
+      "title": "AckFabric-5_HttpEp",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "AckFabric-5_HttpEp",
+        "host": "192.168.200.2",
+        "no_runtime_user": true,
+        "path": "/api",
+        "port": 443,
+        "protocol": "https"
+      }
+    }
+  },
+  "variables": {
+    "variable_01EL947T57JLD0qS23t16BPCcBCKgvRNQnV": {
+      "unique_name": "variable_01EL947T57JLD0qS23t16BPCcBCKgvRNQnV",
+      "properties": {
+        "value": "*****",
+        "scope": "global",
+        "name": "AciLocalAdmin_SecureString",
+        "type": "datatype.secure_string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01gRBIJ4lT0J8qCi0CcrG0bvgGO8oehuN",
+    "definition_workflow_01gsDxN1Ug87C3EBEzmcxxiZoJPWfCB5x"
+  ]
+}
